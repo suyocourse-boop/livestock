@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Уншиж байна...</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&family=Cormorant+Garamond:wght@500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#222;--accent:#b00;--soft:#eee;--head:"Unbounded","Arial Black",Impact,sans-serif;--body:"Manrope",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--head);line-height:1.15;font-weight:700}
+.btn{display:inline-block;padding:15px 28px;border-radius:999px;font-weight:700;text-decoration:none;font-size:1rem;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn-main{background:var(--accent);color:var(--bg)}
+.btn-line{border:2px solid var(--ink);margin-left:8px}
+@media(max-width:520px){.btn-line{margin:10px 0 0}}
+
+header{padding:20px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-family:var(--head);font-weight:700;font-size:1.05rem;text-decoration:none}
+.top-call{background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem}
+
+.hero{padding:30px 0 70px}
+.hero .wrap{display:grid;gap:40px;align-items:center}
+@media(min-width:860px){.hero .wrap{grid-template-columns:1.1fr .9fr}}
+.hero h1{font-size:clamp(2.2rem,7vw,4rem);margin-bottom:20px}
+.hero p{max-width:46ch;font-size:1.1rem;margin-bottom:28px;opacity:.85}
+.perks{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;list-style:none}
+.perks li{background:var(--soft);padding:7px 15px;border-radius:999px;font-size:.92rem;font-weight:500}
+.arch{position:relative;width:100%;max-width:380px;aspect-ratio:4/5;justify-self:center;border-radius:999px 999px 26px 26px;background:var(--accent);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:7.5rem;box-shadow:14px 14px 0 var(--soft)}
+.arch img,.pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+section{padding:64px 0}
+h2{font-size:clamp(1.6rem,4.5vw,2.3rem);margin-bottom:10px}
+.sub{opacity:.75;margin-bottom:34px;max-width:54ch}
+
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.card{background:var(--soft);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.pimg{position:relative;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:4.2rem;background:color-mix(in srgb,var(--accent) 14%,var(--soft))}
+.card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.05rem}
+.card p{font-size:.95rem;opacity:.8;flex:1}
+.price{font-family:var(--head);font-weight:700;color:var(--accent);font-size:1.1rem;margin-top:6px}
+.price small{font-family:var(--body);font-weight:500;color:var(--ink);opacity:.7;font-size:.82rem}
+
+.steps{background:var(--ink);color:var(--bg)}
+.steps .sub{opacity:.8}
+.steplist{display:grid;gap:22px;list-style:none;counter-reset:s}
+@media(min-width:760px){.steplist{grid-template-columns:repeat(3,1fr)}}
+.steplist li{counter-increment:s;padding-top:16px;border-top:2px solid var(--accent)}
+.steplist li::before{content:counter(s);font-family:var(--head);font-size:2rem;color:var(--accent);display:block}
+.steplist b{display:block;font-size:1.1rem;margin:4px 0}
+.steplist span{opacity:.8;font-size:.95rem}
+
+.about p{max-width:60ch;margin-bottom:12px;opacity:.88}
+
+.loc{background:var(--soft)}
+.locgrid{display:grid;gap:26px}
+@media(min-width:820px){.locgrid{grid-template-columns:.8fr 1.2fr}}
+.info h3{font-size:1rem;margin:0 0 6px}
+.info p{margin-bottom:16px}
+.bigphone{font-family:var(--head);font-size:1.6rem;text-decoration:none;color:var(--accent);display:block;margin-bottom:16px}
+.hours{width:100%;border-collapse:collapse;margin-bottom:16px}
+.hours td{padding:6px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+.hours td:last-child{text-align:right;font-weight:700}
+.map{border-radius:22px;overflow:hidden;min-height:340px;background:#ddd}
+.map iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+
+footer{padding:28px 0 40px;font-size:.88rem;opacity:.7;text-align:center}
+.sticky{position:fixed;left:14px;right:14px;bottom:14px;z-index:20;text-align:center;background:var(--accent);color:var(--bg);padding:15px;border-radius:999px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.3)}
+@media(min-width:720px){.sticky{display:none}}
+@media(max-width:719px){footer{padding-bottom:96px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* ===== ХЭВ МАЯГУУД (STYLE) ===== */
+body.s-circle .arch{border-radius:50%;aspect-ratio:1/1;box-shadow:none;outline:3px solid var(--accent);outline-offset:10px}
+body.s-soft{--head:"Manrope",system-ui,sans-serif}
+body.s-soft h1,body.s-soft h2,body.s-soft h3{font-weight:800}
+body.s-soft .arch{border-radius:40px;aspect-ratio:1/1;box-shadow:none}
+body.s-soft .card,body.s-soft .map{border-radius:30px}
+body.s-sharp{--head:"Cormorant Garamond",Georgia,serif}
+body.s-sharp h1{font-size:clamp(2.6rem,8vw,4.8rem);font-weight:600}
+body.s-sharp h2{font-weight:600}
+body.s-sharp .btn,body.s-sharp .top-call,body.s-sharp .sticky,body.s-sharp .perks li{border-radius:0}
+body.s-sharp .card,body.s-sharp .map{border-radius:0}
+body.s-sharp .arch{border-radius:0;box-shadow:none;outline:1px solid var(--accent);outline-offset:14px}
+body.s-sharp .price{font-weight:600;font-size:1.35rem}
+body.s-bold{--head:"Unbounded","Arial Black",sans-serif}
+body.s-bold .btn,body.s-bold .card,body.s-bold .map,body.s-bold .arch{border:3px solid var(--ink)}
+body.s-bold .card,body.s-bold .map{border-radius:14px;box-shadow:6px 6px 0 var(--ink)}
+body.s-bold .arch{border-radius:24px;box-shadow:10px 10px 0 var(--ink)}
+body.s-bold .btn{border-radius:12px}
+
+/* Захиалгын хэсэг */
+.cbtn{display:inline-block;margin-top:10px;align-self:flex-start;background:var(--ink);color:var(--bg);padding:9px 18px;border-radius:999px;font-weight:700;font-size:.9rem;text-decoration:none}
+.cbtn:hover{background:var(--accent)}
+.order{background:var(--soft)}
+.formbox{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.05)}
+.formbox iframe{width:100%;height:760px;border:0;display:block}
+.formnote{margin-top:14px;font-size:.92rem;opacity:.8}
+body.s-sharp .cbtn,body.s-sharp .formbox{border-radius:0}
+body.s-bold .cbtn{border-radius:12px}
+body.s-bold .formbox{border:3px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--ink)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+/* =====================================================================
+   1) ЭНД СОНГОНО: аль бизнесийн загвар ашиглахаа доорх нэрээс сонго
+      "meat" = Шинэ өвлийн идэш   "buuz" = Бууз, хуушуур
+      "livestock" = Малын наймаа   "orom" = Өрөм   "milk" = Сүү
+      "honey" = Зөгийн бал   "borts" = Борц   "veg" = Ногоо бөөнөөр
+   ===================================================================== */
+const ACTIVE = "veg";
+
+/* ХЭВ МАЯГ (дүрс): "arch" = нуман хаалга, "circle" = дугуй,
+   "soft" = зөөлөн дөрвөлжин, "sharp" = хурц/сүрлэг (сериф үсэг), "bold" = зоримог хүрээтэй */
+const STYLE = "sharp";
+
+/* ӨНГӨ: "auto" = бизнесийнхээ өнгө. Бусад: "forest","ocean","honey","berry","earth","dark" */
+const PALETTE = "earth";
+
+/* ЗАХИАЛГЫН ФОРМ: Google Form-ын холбоосоо энд хуулж тавина.
+   Жишээ: "https://docs.google.com/forms/d/e/XXXXXXXX/viewform"
+   Хоосон ("") орхивол зөвхөн "Залгах" товч харагдана. */
+const ORDER_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSfUk84ZfrqQMvo4qDE2M97MeE-ML8_UikFO47iqB435MsP8JQ/viewform?usp=publish-editor";
+
+/* =====================================================================
+   2) ӨӨРИЙН МЭДЭЭЛЛЭЭ ЭНД БИЧНЭ. Зөвхөн "" дотор буй текстийг солино.
+      Шинэ бизнес нэмэх бол аль нэг блокийг хуулж, нэрийг нь солино.
+   ===================================================================== */
+const PRESETS = {
+
+buuz:{
+  name:"Айлын бууз",
+  emoji:"🥟",
+  tagline:"Гар хийцийн хөлдөөсөн бууз, хуушуур",
+  intro:"Шинэхэн махаар, гэрийн жороор гар аргаар хийсэн. Хөлдөөгөөд савлачихсан тул гэртээ хийж идэхэд л хангалттай.",
+  perks:["Хоолны нэмэлтгүй","Шинэхэн мах","Өдөр бүр хүргэнэ"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Баянзүрх дүүрэг, 3-р хороо",
+  mapQuery:"Баянзүрх дүүрэг Улаанбаатар",   /* хаяг эсвэл "47.9184,106.9177" гэж координат */
+  hours:[["Даваа – Ням","09:00 – 21:00"]],
+  delivery:"Хотын дотор 50,000₮-өөс дээш захиалгад үнэгүй хүргэнэ.",
+  steps:[["Залга","Утсаар эсвэл Facebook-ээр хэдэн ширхэг авахаа хэл."],["Тохиролц","Хүргэлтийн цаг, хаягаа баталгаажуулна."],["Хүлээж ав","Хөлдөөсөн, савласан бүтээгдэхүүнийг хүргэнэ."]],
+  about:["Манай гэр бүл 5 жилийн турш гэрийн жороор бууз, хуушуур хийж байна.","Мах, гурилаа найдвартай газраас авч, өдөр бүр шинээр хийдэг."],
+  products:[
+    {name:"Бууз (хөлдөөсөн)",desc:"Үхрийн мах, 50 ширхэг савлагаатай.",price:"35,000₮",unit:"/ 50 ш",emoji:"🥟",img:"images/p1.jpg"},
+    {name:"Хуушуур (хөлдөөсөн)",desc:"Хонины мах, 20 ширхэг савлагаатай.",price:"30,000₮",unit:"/ 20 ш",emoji:"🥠",img:"images/p2.jpg"},
+    {name:"Банш",desc:"Жижиг банш, 60 ширхэг.",price:"28,000₮",unit:"/ 60 ш",emoji:"🍲",img:"images/p3.jpg"},
+    {name:"Хуурга хийх нэмэлт",desc:"Хуурга хийхэд бэлэн жижиглэсэн мах.",price:"22,000₮",unit:"/ кг",emoji:"🥩",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#FFF8EE",ink:"#2B1D14",accent:"#C2410C",soft:"#F6E7D2"}
+},
+
+meat:{
+  name:"Нутгийн мах",
+  emoji:"🥩",
+  tagline:"Шинэ өвлийн идэш, нутгийн малын мах",
+  intro:"Намрын таргалсан, байгалийн бэлчээрийн малын мах. Хэсэглэн задалж, цэвэр савлаж өгнө.",
+  perks:["Бэлчээрийн мал","Хэсэглэж савлана","Хүргэлттэй"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Налайх дүүрэг",
+  mapQuery:"Налайх дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","08:00 – 20:00"]],
+  delivery:"Хотын дотор 100 кг-аас дээш захиалгад үнэгүй хүргэнэ.",
+  steps:[["Залга","Ямар мах, хэдэн кг авахаа хэл."],["Тохиролц","Үнэ, хүргэх өдрөө баталгаажуулна."],["Хүлээж ав","Хэсэглэж савласан махыг хүргэнэ."]],
+  about:["Өөрсдийн малаас шууд зардаг тул дундын наймаачгүй, шинэхэн.","Өвлийн идэш бэлтгэх хүн бүрт тохирсон багцтай."],
+  products:[
+    {name:"Хонины мах",desc:"Бүтэн хонь эсвэл хэсэглэсэн.",price:"16,000₮",unit:"/ кг",emoji:"🐑",img:"images/p1.jpg"},
+    {name:"Үхрийн мах",desc:"Яс нь хамт, хэсэглэж савласан.",price:"17,000₮",unit:"/ кг",emoji:"🐂",img:"images/p2.jpg"},
+    {name:"Ямааны мах",desc:"Тослог багатай, шимтэй.",price:"15,000₮",unit:"/ кг",emoji:"🐐",img:"images/p3.jpg"},
+    {name:"Өвлийн багц 100 кг",desc:"Хонь, үхэр, ямаа холимог.",price:"1,600,000₮",unit:"",emoji:"📦",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#F4F7FA",ink:"#14202B",accent:"#9F1D2C",soft:"#E3EAF1"}
+},
+
+livestock:{
+  name:"Тал нутгийн мал",
+  emoji:"🐎",
+  tagline:"Мал, сүргийн худалдаа",
+  intro:"Эрүүл, вакцинд хамрагдсан мал. Очиж үзээд сонгох боломжтой.",
+  perks:["Вакцинтай","Очиж үзнэ","Тээвэр зохицуулна"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Төв аймаг, Зуунмод сум",
+  mapQuery:"Зуунмод Төв аймаг",
+  hours:[["Даваа – Ням","Урьдчилж залгаад ирнэ үү"]],
+  delivery:"Малын тээвэр зохицуулж өгнө (зардал тусдаа).",
+  steps:[["Залга","Ямар мал, хэдийг авахаа хэл."],["Очиж үз","Малыг газар дээр нь үзэж сонгоно."],["Тохиролц","Үнэ тохиролцож, тээвэрлэнэ."]],
+  about:["Гурван үеийн малчин айл. Мал бүрийн үүлдэр, насыг үнэн зөв хэлнэ.","Хэн ч ирж малыг нүдээр үзэж болно."],
+  products:[
+    {name:"Хонь",desc:"1–3 настай, таргалсан.",price:"Тохиролцоно",unit:"",emoji:"🐑",img:"images/p1.jpg"},
+    {name:"Ямаа",desc:"Бог мал, ашиг шимтэй.",price:"Тохиролцоно",unit:"",emoji:"🐐",img:"images/p2.jpg"},
+    {name:"Үхэр",desc:"Эр, эм, тугал.",price:"Тохиролцоно",unit:"",emoji:"🐂",img:"images/p3.jpg"},
+    {name:"Адуу",desc:"Унаган, азарга, шүдлэн.",price:"Тохиролцоно",unit:"",emoji:"🐎",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#F6F4EC",ink:"#26301F",accent:"#3F6B2B",soft:"#E7E8D6"}
+},
+
+orom:{
+  name:"Цагаан өрөм",
+  emoji:"🧈",
+  tagline:"Гар аргаар хийсэн өрөм, цөцгий",
+  intro:"Үнээний шинэ сүүнээс аажим буцалгаж хийсэн өтгөн өрөм. Идээ, цайндаа хамгийн сайхан.",
+  perks:["Гар аргаар","Шинэ сүүнээс","Хоногийн дотор хүргэнэ"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Сонгинохайрхан дүүрэг",
+  mapQuery:"Сонгинохайрхан дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","09:00 – 19:00"]],
+  delivery:"Хотын дотор 2 хоногт хүргэнэ.",
+  steps:[["Залга","Хэдэн лонх, хэдэн кг авахаа хэл."],["Тохиролц","Хүргэлтийн цаг, хаягаа хэл."],["Хүлээж ав","Шинэхэн, савласан өрмийг авна."]],
+  about:["Манай өрөм хоёр өдөр аажим чанагдаж бэлэн болдог.","Нэмэлтгүй, зөвхөн сүүнээс."],
+  products:[
+    {name:"Өрөм (жижиг)",desc:"250 гр шилэн саванд.",price:"15,000₮",unit:"/ ш",emoji:"🧈",img:"images/p1.jpg"},
+    {name:"Өрөм (том)",desc:"500 гр шилэн саванд.",price:"28,000₮",unit:"/ ш",emoji:"🥛",img:"images/p2.jpg"},
+    {name:"Цөцгийтэй тос",desc:"Гар аргаар, цэвэр.",price:"30,000₮",unit:"/ кг",emoji:"🧈",img:"images/p3.jpg"},
+    {name:"Айраг, шар тос",desc:"Улирлын бүтээгдэхүүн.",price:"Асуугаарай",unit:"",emoji:"🍶",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#FBF8F1",ink:"#2A2A2E",accent:"#2F5D8A",soft:"#EEE9DA"}
+},
+
+milk:{
+  name:"Шинэ сүү",
+  emoji:"🥛",
+  tagline:"Үнээний шинэ сүү, айраг, тараг",
+  intro:"Өглөө блуулсан шинэ сүүг өдөртөө хүргэнэ. Сар бүр захиалгаар авах боломжтой.",
+  perks:["Өдөр бүр шинэ","Сарын захиалга","Шилэн саванд"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Хан-Уул дүүрэг",
+  mapQuery:"Хан-Уул дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","07:00 – 18:00"]],
+  delivery:"Орон сууцны хороолол бүрт өглөө хүргэнэ.",
+  steps:[["Залга","Өдөр бүр хэдэн литр авахаа хэл."],["Тохиролц","Хүргэлтийн хаяг, цагаа тогтооно."],["Хүлээж ав","Өглөө бүр шинэ сүүгээ авна."]],
+  about:["Өөрсдийн үнээнээс шууд, нэмэлтгүй.","Сарын захиалгад хөнгөлөлттэй."],
+  products:[
+    {name:"Шинэ сүү",desc:"Үнээний сүү, шилэн саванд.",price:"3,500₮",unit:"/ литр",emoji:"🥛",img:"images/p1.jpg"},
+    {name:"Тараг",desc:"Гэрийн тараг.",price:"5,000₮",unit:"/ литр",emoji:"🍶",img:"images/p2.jpg"},
+    {name:"Айраг",desc:"Улирлын бүтээгдэхүүн.",price:"7,000₮",unit:"/ литр",emoji:"🍼",img:"images/p3.jpg"},
+    {name:"Сарын захиалга",desc:"Өдөр бүр 2 литр, сард 60 литр.",price:"180,000₮",unit:"/ сар",emoji:"📅",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#F3F8F8",ink:"#17313A",accent:"#0E7C86",soft:"#DCEBEC"}
+}
+,
+honey:{
+  name:"Алтан бал",
+  emoji:"🍯",
+  tagline:"Нутгийн зөгийн бал, шууд зөгийчнөөс",
+  intro:"Өөрсдийн зөгийн фермээс түүсэн цэвэр бал. Нэмэлтгүй, халаалтгүй, шилэн саванд савлана.",
+  perks:["Цэвэр бал","Шууд фермээс","Шилэн саванд"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Чингэлтэй дүүрэг",
+  mapQuery:"Чингэлтэй дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","09:00 – 19:00"]],
+  delivery:"Хотын дотор хүргэнэ. 3 шилнээс дээш авбал хөнгөлөлттэй.",
+  steps:[["Залга","Хэдэн шил, ямар хэмжээтэй авахаа хэл."],["Тохиролц","Хүргэлтийн хаяг, цагаа баталгаажуулна."],["Хүлээж ав","Шилэн саванд савласан балыг авна."]],
+  about:["Манай зөгийн аж ахуй жил бүр зуны цэцэгнээс бал түүдэг.","Бал бүрийн савлалт, түүсэн огноог шошгон дээр бичдэг."],
+  products:[
+    {name:"Цэцгийн бал 0.5 л",desc:"Зуны хольц цэцгийн бал.",price:"25,000₮",unit:"/ ш",emoji:"🍯",img:"images/p1.jpg"},
+    {name:"Цэцгийн бал 1 л",desc:"Гэр бүлийн том шил.",price:"45,000₮",unit:"/ ш",emoji:"🍯",img:"images/p2.jpg"},
+    {name:"Бал сархинагтай",desc:"Байгалийн хавтан хэлбэрээр.",price:"35,000₮",unit:"/ кг",emoji:"🐝",img:"images/p3.jpg"},
+    {name:"Бэлгийн багц",desc:"2 жижиг шил, хайрцагтай.",price:"40,000₮",unit:"/ багц",emoji:"🎁",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#FFF9E8",ink:"#2D2208",accent:"#B97A00",soft:"#F6E8BF"}
+},
+
+borts:{
+  name:"Тал нутгийн борц",
+  emoji:"🥩",
+  tagline:"Байгалийн салхинд хатаасан борц",
+  intro:"Сайн чанарын мах, давсаар л амталж, салхинд хатаасан. Аян замд, өвлийн хоолонд хамгийн тохиромжтой.",
+  perks:["Давснаас өөр нэмэлтгүй","Үхэр, хонь, ямаа","Вакумаар савлана"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Хан-Уул дүүрэг",
+  mapQuery:"Хан-Уул дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","09:00 – 20:00"]],
+  delivery:"Улсын хэмжээнд шуудангаар илгээнэ. Хотын дотор хүргэнэ.",
+  steps:[["Залга","Ямар борц, хэдэн кг авахаа хэл."],["Тохиролц","Хүргэлт, төлбөрийг баталгаажуулна."],["Хүлээж ав","Вакумаар савласан борцыг авна."]],
+  about:["Мах бүрийг шинээр сонгож, хатаалтын хугацааг хянаж хийдэг.","Урт хугацаанд хадгалагдах тул их хэмжээгээр авахад тохиромжтой."],
+  products:[
+    {name:"Үхрийн борц",desc:"Өтгөн, тослог багатай.",price:"55,000₮",unit:"/ кг",emoji:"🐂",img:"images/p1.jpg"},
+    {name:"Хонины борц",desc:"Амт сайтай, зөөлөн.",price:"50,000₮",unit:"/ кг",emoji:"🐑",img:"images/p2.jpg"},
+    {name:"Ямааны борц",desc:"Тослог багатай.",price:"48,000₮",unit:"/ кг",emoji:"🐐",img:"images/p3.jpg"},
+    {name:"Борцны багц 5 кг",desc:"Гурван төрөл холимог.",price:"240,000₮",unit:"/ багц",emoji:"📦",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#FAF5EE",ink:"#2B1F17",accent:"#8A3B1E",soft:"#EDE0D0"}
+},
+
+veg:{
+  name:"Шинэ ургац",
+  emoji:"🥕",
+  tagline:"Шинэ ургацын ногоо, бөөний үнээр",
+  intro:"Тариаланчаас шууд авсан шинэхэн ногоо. Ресторан, дэлгүүр, цэцэрлэг, сургуульд бөөнөөр нийлүүлнэ.",
+  perks:["Тариаланчаас шууд","Бөөний үнэ","Тогтмол нийлүүлнэ"],
+  phone:"9900-0000", phoneRaw:"+97699000000",
+  facebook:"https://facebook.com/",
+  address:"Улаанбаатар, Налайх дүүрэг, зах",
+  mapQuery:"Налайх дүүрэг Улаанбаатар",
+  hours:[["Даваа – Ням","06:00 – 18:00"]],
+  delivery:"100 кг-аас дээш захиалгад хүргэнэ. Бөөний доод хэмжээг утсаар асууна.",
+  steps:[["Залга","Ямар ногоо, хэдэн кг хэрэгтэйгээ хэл."],["Тохиролц","Үнэ, нийлүүлэх өдөр, давтамжаа тогтооно."],["Хүлээж ав","Шинэхэн ногоог хүргэнэ."]],
+  about:["Бид хэд хэдэн тариаланчтай шууд ажилладаг тул шинэхэн, хямд.","Байгууллагад тогтмол нийлүүлэх гэрээ хийж болно."],
+  products:[
+    {name:"Төмс",desc:"Шинэ ургац, цэвэрлэсэн.",price:"1,800₮",unit:"/ кг (бөөнөөр)",emoji:"🥔",img:"images/p1.jpg"},
+    {name:"Лууван",desc:"Эхний сорт, шүүслэг.",price:"2,000₮",unit:"/ кг (бөөнөөр)",emoji:"🥕",img:"images/p2.jpg"},
+    {name:"Байцаа",desc:"Цагаан байцаа.",price:"1,500₮",unit:"/ кг (бөөнөөр)",emoji:"🥬",img:"images/p3.jpg"},
+    {name:"Манжин, сонгино",desc:"Улирлын ногоо.",price:"Асуугаарай",unit:"",emoji:"🧅",img:"images/p4.jpg"}
+  ],
+  theme:{bg:"#F2F7EE",ink:"#1D2B1A",accent:"#3E7B2E",soft:"#DFE9D6"}
+}
+};
+
+/* =====================ИЙШЭЭ ГАР ХҮРЧ болохгүй!!!!!! ДООРХИЙГ ӨӨРЧЛӨХГҮЙ ===================== */
+// ¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥
+const C = PRESETS[ACTIVE];
+const PALETTES = {
+  forest:{bg:"#F2F6EE",ink:"#1D2B1A",accent:"#3E7B2E",soft:"#DFE9D6"},
+  ocean:{bg:"#F1F6FA",ink:"#10222F",accent:"#1B6FA8",soft:"#DCE8F1"},
+  honey:{bg:"#FFF9E8",ink:"#2D2208",accent:"#B97A00",soft:"#F6E8BF"},
+  berry:{bg:"#FBF3F5",ink:"#2A1620",accent:"#A3234F",soft:"#F2DDE4"},
+  earth:{bg:"#FAF5EE",ink:"#2B1F17",accent:"#8A3B1E",soft:"#EDE0D0"},
+  dark:{bg:"#16120F",ink:"#F1EBDF",accent:"#D4AF6A",soft:"#241F1A"}
+};
+document.body.classList.add("s-" + STYLE);
+const t = PALETTES[PALETTE] || C.theme, r = document.documentElement.style;
+r.setProperty("--bg",t.bg); r.setProperty("--ink",t.ink); r.setProperty("--accent",t.accent); r.setProperty("--soft",t.soft);
+document.title = C.name + " | " + C.tagline;
+document.querySelector('meta[name=description]').content = C.intro;
+
+const tel = "tel:" + C.phoneRaw;
+const hasForm = ORDER_FORM.trim() !== "";
+const orderHref = hasForm ? "#order" : tel;
+const embedUrl = ORDER_FORM.includes("embedded=true") ? ORDER_FORM : ORDER_FORM + (ORDER_FORM.includes("?") ? "&" : "?") + "embedded=true";
+const q = encodeURIComponent(C.mapQuery);
+const mapEmbed = "https://www.google.com/maps?q=" + q + "&output=embed";
+const mapLink = "https://www.google.com/maps/search/?api=1&query=" + q;
+const img = (src) => src ? `<img src="${src}" alt="" loading="lazy" onerror="this.remove()">` : "";
+
+document.getElementById("app").innerHTML = `
+<header><div class="wrap">
+  <a class="logo" href="#">${C.emoji} ${C.name}</a>
+  <a class="top-call" href="${tel}">Залгах</a>
+</div></header>
+<main>
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1>${C.tagline}</h1>
+      <p>${C.intro}</p>
+      <a class="btn btn-main" href="${orderHref}">${hasForm ? "Захиалах" : "Захиалах: " + C.phone}</a>
+      <a class="btn btn-line" href="#products">Үнэ харах</a>
+      <ul class="perks">${C.perks.map(p=>`<li>${p}</li>`).join("")}</ul>
+    </div>
+    <div class="arch" aria-hidden="true">${C.emoji}${img("images/hero.jpg")}</div>
+  </div></div>
+
+  <section id="products"><div class="wrap">
+    <h2>Бүтээгдэхүүн, үнэ</h2>
+    <p class="sub">${C.delivery}</p>
+    <div class="grid">${C.products.map(p=>`
+      <div class="card">
+        <div class="pimg">${p.emoji}${img(p.img)}</div>
+        <div class="body"><h3>${p.name}</h3><p>${p.desc}</p>
+        <div class="price">${p.price} <small>${p.unit||""}</small></div>
+        ${hasForm ? `<a class="cbtn" href="#order">Захиалах</a>` : ""}</div>
+      </div>`).join("")}</div>
+  </div></section>
+
+  ${hasForm ? `<section class="order" id="order"><div class="wrap">
+    <h2>Захиалгын хуудас</h2>
+    <p class="sub">Нэр, утас, авах зүйлээ бөглөөд илгээнэ үү. Бид тантай холбогдож баталгаажуулна.</p>
+    <div class="formbox"><iframe src="${embedUrl}" title="Захиалгын форм" loading="lazy">Уншиж байна...</iframe></div>
+    <p class="formnote">Форм харагдахгүй байвал <a href="${ORDER_FORM}" target="_blank" rel="noopener"><b>энд дарж шинэ цонхонд нээнэ үү</b></a>, эсвэл ${C.phone} дугаарт залгана уу.</p>
+  </div></section>` : ""}
+
+  <section class="steps"><div class="wrap">
+    <h2>Хэрхэн захиалах вэ</h2>
+    <p class="sub">Гурван энгийн алхам.</p>
+    <ol class="steplist">${C.steps.map(s=>`<li><b>${s[0]}</b><span>${s[1]}</span></li>`).join("")}</ol>
+  </div></section>
+
+  <section class="about"><div class="wrap">
+    <h2>Бидний тухай</h2>
+    ${C.about.map(a=>`<p>${a}</p>`).join("")}
+  </div></section>
+
+  <section class="loc" id="contact"><div class="wrap">
+    <h2>Хаана байдаг вэ</h2>
+    <p class="sub">Газрын зураг дээр байршлыг харна уу.</p>
+    <div class="locgrid">
+      <div class="info">
+        <a class="bigphone" href="${tel}">${C.phone}</a>
+        <h3>Хаяг</h3><p>${C.address}</p>
+        <h3>Ажиллах цаг</h3>
+        <table class="hours">${C.hours.map(h=>`<tr><td>${h[0]}</td><td>${h[1]}</td></tr>`).join("")}</table>
+        <a class="btn btn-main" href="${mapLink}" target="_blank" rel="noopener">Замыг харах</a>
+        <a class="btn btn-line" href="${C.facebook}" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="map"><iframe src="${mapEmbed}" title="Байршил" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div></section>
+</main>
+<footer>© 2026 ${C.name}</footer>
+<a class="sticky" href="${orderHref}">${hasForm ? "Захиалах" : "Залгаж захиалах"}</a>`;
+</script>
+</body>
+</html>
